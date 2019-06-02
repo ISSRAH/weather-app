@@ -1,7 +1,9 @@
-<p>
-  weather works!
-</p>
-<select>
-  <option *ngFor="let city of cities ">{{city.Name}} </option>
+
+<select [(ngModel)] = "city" (ngModelChange)="getTemperatureByCityName(city.Name)">
+  <option *ngFor="let city of cities " [ngValue]="city">{{city.Name}} </option>
 </select>
-<h2>My favorite hero is: {{result}}</h2>
+<h2>My favorite City weather is: {{result}}</h2>
+<div>
+  <p>The Weather is {{getWeatherCondition()}}</p>
+
+</div>
