@@ -1,7 +1,50 @@
-<p>
-  weather works!
-</p>
-<select>
-  <option *ngFor="let city of cities ">{{city.Name}} </option>
+<div>
+  <input placeholder="cityname" [(ngModel)]="addCityFieldValue"/>
+  <button (click)="add()">Add</button>
+</div>
+<select [(ngModel)] = "city" (ngModelChange)="getTemperatureByCityName(city.Name)">
+  <option *ngFor="let city of cities " [ngValue]="city">{{city.Name}} </option>
 </select>
-<h2>My favorite hero is: {{result}}</h2>
+<h2>My favorite City weather is: {{result.temp}}</h2>
+<div>
+  <p>The Weather is {{getWeatherCondition()}}</p>
+</div>
+<div>
+  <input type="checkbox" [(ngModel)]="showhide"/>Show Table
+</div>
+<div *ngIf="showhide">
+  <table style="width: 100%">
+    <tr>
+      <th> Information</th>
+      <th> Data</th>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <th>{{result.temp}}</th>
+    </tr>
+    <tr>
+      <th>pressure</th>
+      <th>{{result.pressure}}</th>
+    </tr>
+    <tr>
+      <th>humidity</th>
+      <th>{{result.humidity}}</th>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <th>{{result.temp_min}}</th>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <th>{{result.temp_max}}</th>
+    </tr>
+    <tr>
+      <th>sea_level</th>
+      <th>{{result.sea_level}}</th>
+    </tr>
+    <tr>
+      <th>grnd_level</th>
+      <th>{{result.grnd_level}}</th>
+    </tr>
+  </table>
+</div>
